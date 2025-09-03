@@ -30,7 +30,6 @@ export interface CourseProgress {
   lastAccessed?: string;
 }
 
-// 🔥 DETAIL uchun qo'shimcha typelar
 export interface Instructor {
   _id: string;
   name: string;
@@ -47,10 +46,26 @@ export interface CourseLesson {
   videoUrl?: string;
 }
 
+export interface CourseSection {
+  _id: string;
+  title: string;
+  description?: string;
+  duration?: string;
+  order: number;
+  videoUrl?: string;
+  isCompleted?: boolean;
+}
+
 export interface CourseUnit {
   _id: string;
   title: string;
-  lessons: CourseLesson[];
+  description: string;
+  order: number;
+  sections: CourseSection[];
+  courseId: string;
+  createdAt?: string;
+  updatedAt?: string;
+  __v?: number;
 }
 
 export interface CourseDetail extends Course {

@@ -1,6 +1,4 @@
-// pages/about.js
 import Head from 'next/head';
-// import JoinUs from '@/components/JoinUs';
 import FAQ from '@/components/about/FAQ';
 import HowItWorks from '@/components/about/HowItWorks';
 import Benefits from '@/components/about/Benefits';

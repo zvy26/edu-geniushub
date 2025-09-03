@@ -5,6 +5,9 @@ export interface User {
   email: string;
   phone: string;
   role: string;
+  isPaid: boolean;
+  subscriptionExpiry?: string;
+  currentStreak?: number;
   createdAt: string;
   updatedAt: string;
   __v?: number;

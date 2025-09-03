@@ -14,7 +14,7 @@ export default function CourseCard({ course }: CourseCardProps) {
         {/* Smaller image/icon */}
         <div className="relative h-16 w-16 flex-shrink-0 mr-4 rounded-lg overflow-hidden border border-gray-200">
           <Image
-            src={course.picture ? `https://dead.uz/api${course.picture}` : "/images/course-placeholder.jpg"}
+            src={course.picture ? `https://dead.uz${course.picture}` : "/images/course-placeholder.jpg"}
             alt={course.title || "Course"}
             fill
             className="object-cover"
