@@ -45,7 +45,7 @@ export default function CourseDetailPage() {
           <div className="lg:col-span-2">
             <CourseHeader course={course} />
             <InstructorSection instructor={course.instructor} />
-            <CourseContent units={course.units} />
+            <CourseContent units={course.units} courseId={course._id} />
             <LearningOutcomes />
           </div>
           

@@ -76,3 +76,28 @@ export interface CourseDetail extends Course {
   units: CourseUnit[];
   progress?: CourseProgress;
 }
+
+
+export interface Lesson {
+  _id: string;
+  title: string;
+  description: string;
+  sectionId: string;
+  type: string;
+  order: number;
+  videoUrl?: string;
+  textContent?: string;
+  fileUrl?: string;
+  fileName?: string;
+  createdAt: string;
+  updatedAt: string;
+  __v?: number;
+}
+
+export interface Section {
+  _id: string;
+  title: string;
+  description?: string;
+  duration?: string;
+  // lessons will be fetched dynamically, so not required here
+}

@@ -3,11 +3,10 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Play, Users, Award, Calendar, MessageCircle, Clock, CheckCircle, BookOpen, BarChart3 } from "lucide-react"
+import { Play, Users, Award, Calendar, MessageCircle, Clock, CheckCircle, BarChart3 } from "lucide-react"
 import { useProfileQuery } from "@/api/queries/profile"
 import PaymentModal from "@/components/payment/PaymentModal"
 import { Course } from "@/types/courses"
-import Link from "next/link"
 
 interface CourseSidebarProps {
   course: Course

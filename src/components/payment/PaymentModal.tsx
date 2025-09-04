@@ -15,26 +15,25 @@ interface PaymentModalProps {
   onPaymentSuccess: () => void
 }
 
-export default function PaymentModal({ 
-  isOpen, 
-  onClose, 
-  courseId, 
-  courseTitle, 
+export default function PaymentModal({
+  isOpen,
+  onClose,
+  courseTitle,
   amount,
-  onPaymentSuccess 
+  onPaymentSuccess
 }: PaymentModalProps) {
   const [cardNumber, setCardNumber] = useState("")
   const [expiryDate, setExpiryDate] = useState("")
   const [cvv, setCvv] = useState("")
   const [cardHolderName, setCardHolderName] = useState("")
-  
+
   const processPaymentMutation = useProcessPaymentMutation()
 
   if (!isOpen) return null
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     // Simple validation
     if (!cardNumber || !expiryDate || !cvv || !cardHolderName) {
       toast.error("Please fill all card details")
@@ -49,13 +48,17 @@ export default function PaymentModal({
         cardHolderName,
         amount
       })
-      
+
       toast.success("Payment processed successfully!")
       onPaymentSuccess()
       onClose()
-    } catch (error) {
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("Payment error:", error.message)
+      }
       toast.error("Payment failed. Please try again.")
     }
+
   }
 
   return (
