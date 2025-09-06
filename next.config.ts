@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 
-// Get API URL from env
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-// Default to dead.uz if not set or invalid
 let hostname = "dead.uz";
 
 if (apiUrl) {

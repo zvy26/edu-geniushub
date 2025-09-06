@@ -1,34 +1,16 @@
-// import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-// export function middleware(request: NextRequest) {
-//   const token = request.cookies.get('token')?.value;
-//   const role = request.cookies.get('role')?.value;
-//   const pathname = request.nextUrl.pathname;
+export function middleware(req: NextRequest) {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-//   // 🔒 Login qilmagan odamni /login ga qaytarish
-//   if (!token && pathname.startsWith('/crm')) {
-//     return NextResponse.redirect(new URL('/login', request.url));
-//   }
+  if (apiUrl) {
+    try {
+      new URL(apiUrl); // validate
+    } catch (err) {
+      console.error("❌ Invalid NEXT_PUBLIC_API_URL in middleware:", apiUrl);
+    }
+  }
 
-//   // 🏠 Root sahifaga login qilmagan odam kira olmasin
-//   if (pathname === '/') {
-//     const url = request.nextUrl.clone();
-//     url.pathname = token ? '/crm' : '/login';
-//     return NextResponse.redirect(url);
-//   }
-
-//   // 🎯 Role tekshirish
-//   if (pathname.startsWith('/crm/admin') && role !== 'admin') {
-//     return NextResponse.redirect(new URL('/crm', request.url));
-//   }
-
-//   if (pathname.startsWith('/crm/user') && role !== 'user') {
-//     return NextResponse.redirect(new URL('/crm', request.url));
-//   }
-
-//   return NextResponse.next();
-// }
-
-// export const config = {
-//   matcher: ['/', '/crm/:path*'],
-// };
+  return NextResponse.next();
+}
